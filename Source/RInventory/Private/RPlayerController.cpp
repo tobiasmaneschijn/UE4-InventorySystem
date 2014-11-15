@@ -23,7 +23,7 @@ void ARPlayerController::SetupInputComponent()
 {
     Super::SetupInputComponent();
 
-    //InputComponent->BindAction("ShowInventory", IE_Pressed, this, &AVPlayerController::ToggleInventoryScreen);
+    InputComponent->BindAction("InventoryScreen", IE_Pressed, this, &ARPlayerController::ToggleInventoryScreen);
     InputComponent->BindAction("Use", IE_Pressed, this, &ARPlayerController::OnUse);
 }
 
