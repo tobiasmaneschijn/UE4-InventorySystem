@@ -33,8 +33,7 @@ ARInventoryCharacter::ARInventoryCharacter(const FObjectInitializer& ObjectIniti
 	// Create a camera boom (pulls in towards the player if there is a collision)
 	CameraBoom = ObjectInitializer.CreateDefaultSubobject<USpringArmComponent>(this, TEXT("CameraBoom"));
 	CameraBoom->AttachTo(RootComponent);
-	CameraBoom->TargetArmLength = 250.0f; // The camera follows at this distance behind the character
-    CameraBoom->SetRelativeLocation(FVector(0.0f, 50.0f, 100.0f));
+	CameraBoom->TargetArmLength = 300.0f; // The camera follows at this distance behind the character	
 	CameraBoom->bUsePawnControlRotation = true; // Rotate the arm based on the controller
 
 	// Create a follow camera
