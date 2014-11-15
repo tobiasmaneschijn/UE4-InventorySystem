@@ -19,5 +19,5 @@ public:
     virtual void BeginDestroy() override;
 	
     void AddItem();
-	
+
 };

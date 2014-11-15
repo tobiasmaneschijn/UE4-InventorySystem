@@ -13,11 +13,13 @@ Intermediate/
 # Ignore binary files...
 Binaries/
 
-# Ignore content besides UI and Blueprints
+# Ignore content besides UI, Blueprints, and Aimations
 !/Content
 /Content/*
 !/Content/Blueprints
 !/Content/UI
+!/Content/Animations
+!/Content/Character
 
 # Ignore saved backuos, logs, cooked files, etc...
 Saved/
