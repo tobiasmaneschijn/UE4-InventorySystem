@@ -18,3 +18,6 @@ Binaries/
 /Content/*
 !/Content/Blueprints
 !/Content/UI
+
+# Ignore saved backuos, logs, cooked files, etc...
+/Saved/*

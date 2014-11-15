@@ -24,4 +24,3 @@ void ARHUD::ToggleInventoryScreen()
 {
     InventoryWidget->ToggleVisibility();
 }
-

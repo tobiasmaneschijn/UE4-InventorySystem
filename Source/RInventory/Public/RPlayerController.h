@@ -31,6 +31,7 @@ public:
     UPROPERTY()
     class ARHUD* MyVHUD;
 
-    ARInventoryCharacter* VPlayer;
+    UPROPERTY()
+    class ARInventoryCharacter* VPlayer;
 	
 };

@@ -23,13 +23,13 @@ public:
 
     void BeginPlay() override;
 
-    UPROPERTY(EditAnywhere, Category = "Item")
+    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Item")
     FName Name;
 
-    UPROPERTY(EditAnywhere, Category = "Item")
+    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Item")
     FString Description;
 
-    UPROPERTY(EditAnywhere, Category = "Item")
+    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Item")
     bool bIsEquipable;
 
     //UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Item")

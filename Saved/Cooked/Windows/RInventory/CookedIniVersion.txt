@@ -1,6 +1,7 @@
 [CookSettings]
 VersionedIniParams=Engine:/Script/Engine.RendererSettings:Compat.UseDXT5NormalMaps:False
 VersionedIniParams=Editor:StructSerialization:BreakSerializationRecursion:true
+VersionedIniParams=EditorUserSettings:/Script/UnrealEd.EditorUserSettings:MaterialQualityLevel:1
 VersionedIniParams=Engine:/Script/Engine.Engine:GameUserSettingsClassName:/Script/Engine.GameUserSettings
 VersionedIniParams=Engine:/Script/EngineSettings.GameMapsSettings:GameDefaultMap:/Game/Maps/Example_Map
 VersionedIniParams=Engine:/Script/EngineSettings.GameMapsSettings:GameInstanceClass:/Script/Engine.GameInstance

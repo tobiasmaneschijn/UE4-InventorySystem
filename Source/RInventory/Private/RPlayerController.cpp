@@ -59,17 +59,22 @@ void ARPlayerController::OnUse() {
 
     if(ARItem* UsableItem = Cast<ARItem>(Hit.GetActor()))
     {
-        if(!VPlayer) {
+        if(VPlayer == NULL) {
             VPlayer = Cast<ARInventoryCharacter>(Player);
             UE_LOG(RLog, Warning, TEXT("VPLAYER NOT SET!"));
         }
         //VPlayer->PickupItem(UsableItem);
-        UsableItem->PickedUp();
+        UsableItem->PickedUp(); // Notify Item its been picked up incase  it wants to do something special
+        Cast<ARHUD>(MyHUD)->InventoryWidget->AddItem(UsableItem);
+
         //	UE_LOG(ValhallaLog, Warning, TEXT("Actor's Name is %s"), *Hit.GetActor()->GetName());
     }
     	if (Hit.Actor != NULL) {
     	    UE_LOG(RLog, Warning, TEXT("Actor's Name is %s"), *Hit.GetActor()->GetName());
-    	}
+        }
+        else {
+            UE_LOG(RLog, Warning, TEXT("Actor was NULL"));
+        }
     //else {
     //	UE_LOG(ValhallaLog, Warning, TEXT("No Actor"));
     //}

@@ -15,7 +15,10 @@ class RINVENTORY_API URInventoryWidget : public UUserWidget
 	
 public:
     UFUNCTION(Category = "Items")
-	void AddItem();
+	void AddItem(class ARItem* Item);
+
+    UFUNCTION(BlueprintImplementableEvent, Category = "Events")
+    void OnAddItem(class ARItem* Item);
 
     void ToggleVisibility();
 };

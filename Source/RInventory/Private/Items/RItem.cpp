@@ -18,7 +18,7 @@ void ARItem::BeginPlay()
 void ARItem::PickedUp()
 {
     UE_LOG(RLog, Warning, TEXT("Item Pick up!"));
-  //  StaticMesh->SetHiddenInGame(true);
+    StaticMesh->SetHiddenInGame(true);
 }
 
 void ARItem::Dropped()
