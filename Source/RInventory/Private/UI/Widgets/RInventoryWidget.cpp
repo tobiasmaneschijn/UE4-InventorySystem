@@ -8,7 +8,15 @@
 
 void URInventoryWidget::AddItem(ARItem* Item) {
 
+    Items.Add(Item);
+    
     OnAddItem(Item); // Notify blueprints of added Item
+}
+
+void URInventoryWidget::PostInitProperties() {
+    Super::PostInitProperties();
+
+    Items.Reserve(MaxInventorySlots);
 }
 
 void URInventoryWidget::ToggleVisibility()
