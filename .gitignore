@@ -5,15 +5,16 @@
 *.sdf
 
 # Derived data cache is never checked in
-/DerivedDataCache/**
+DerivedDataCache/
 
 # Engine intermediates
-/Intermediate/**
+Intermediate/
 
 # Ignore binary files...
-/Binaries/**
+Binaries/
 
 # Ignore content besides UI and Blueprints
-/Content/**
-!/Conent/Blueprints
+!/Content
+/Content/*
+!/Content/Blueprints
 !/Content/UI
