@@ -1,0 +1,13 @@
+{
+	"FileVersion": 3,
+	"EngineAssociation": "{E5C54C93-462E-C1EA-D858-59BC53EF1A6E}",
+	"Category": "",
+	"Description": "",
+	"Modules": [
+		{
+			"Name": "RInventory",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
+}
