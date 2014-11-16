@@ -2,32 +2,32 @@
 
 #pragma once
 
-#include "Blueprint/UserWidget.h"
+#include "UI/Widgets/RWidget.h"
 #include "RInventoryWidget.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class RINVENTORY_API URInventoryWidget : public UUserWidget
+class RINVENTORY_API URInventoryWidget : public URWidget
 {
-    GENERATED_BODY()
+	GENERATED_BODY()
 	
 public:
 
     void PostInitProperties() override;
 
     UFUNCTION(Category = "Items")
-	void AddItem(class ARItem* Item);
+        void AddItem(class ARItem* Item);
 
     UFUNCTION(BlueprintImplementableEvent, Category = "Events")
     void OnAddItem(class ARItem* Item);
-
-    void ToggleVisibility();
 
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
     TArray<class ARItem*> Items;
 
     UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
     uint32 MaxInventorySlots;
+	
+	
 };

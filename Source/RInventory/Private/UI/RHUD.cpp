@@ -2,7 +2,7 @@
 
 #include "RInventory.h"
 
-#include "UI/Widgets/RInventoryWidget.h"
+//#include "UI/Widgets/RInventoryWidget.h"
 #include "RHUD.h"
 
 void ARHUD::PostInitializeComponents()
@@ -10,11 +10,12 @@ void ARHUD::PostInitializeComponents()
     Super::PostInitializeComponents();
     if(InventoryWidgetType)
     {
-        GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Green, TEXT("InventoryWidgetType Found! Creating Widget!"));
+        UE_LOG(RLog, Warning, TEXT("InventorWidgetType!"));
         InventoryWidget = CreateWidget<URInventoryWidget>(GetWorld(), InventoryWidgetType);
     }
     else
     {
+        UE_LOG(RLog, Error, TEXT("InventorWidgetType not set!"));
         // Blow the fuck up
     }
 
@@ -22,5 +23,6 @@ void ARHUD::PostInitializeComponents()
 
 void ARHUD::ToggleInventoryScreen()
 {
+    UE_LOG(RLog, Warning, TEXT("InvScreen Toggle"));
     InventoryWidget->ToggleVisibility();
 }
