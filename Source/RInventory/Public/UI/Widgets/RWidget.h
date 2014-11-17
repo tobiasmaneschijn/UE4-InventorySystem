@@ -15,7 +15,7 @@ class RINVENTORY_API URWidget : public UUserWidget
 	
 public:
 
-    void ToggleVisibility();
+    virtual void ToggleVisibility();
 
     UFUNCTION(BlueprintImplementableEvent, Category = "Events")
     void OnAddedToViewport();
