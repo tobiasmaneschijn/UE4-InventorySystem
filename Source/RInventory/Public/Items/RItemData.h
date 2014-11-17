@@ -9,25 +9,34 @@
  * 
  */
 USTRUCT(BlueprintType)
-struct FRItemData
+struct FRItemInfo
 {
 	GENERATED_USTRUCT_BODY()
 	
 public:
 
-    FRItemData() :
-        ItemName("Name Not Set")
-   {
+    FRItemInfo() :
+        ItemName("Default Item Name"),
+        ItemDescription("Default Item Description"),
+        ItemIcon()
+    {
 
     }
-    FRItemData(FName Name):
-        ItemName(Name)
+    
+    FRItemInfo(FName Name, FString Description, FSlateBrush Icon) :
+        ItemName(Name),
+        ItemDescription(Description),
+        ItemIcon(Icon)
     {
 
     }
 
-    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "wtfsauce")
+    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Item Info")
     FName ItemName;
+
+    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Item Info")
+    FString ItemDescription;
 	
-	
+    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Item Info")
+    FSlateBrush ItemIcon;
 };

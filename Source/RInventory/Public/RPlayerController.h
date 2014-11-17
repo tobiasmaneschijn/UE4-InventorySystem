@@ -18,11 +18,13 @@ class RINVENTORY_API ARPlayerController : public APlayerController
 	GENERATED_BODY()
 	
 public:
-    virtual void BeginPlay() override;
+    void BeginPlay() override;
 
-    virtual void PostInitializeComponents() override;
+    void PostInitializeComponents() override;
     /* Input **/
-    virtual void SetupInputComponent() override;
+    void SetupInputComponent() override;
+
+    void SetPawn(APawn* Pawn) override;
 
     void ToggleInventoryScreen();
 
@@ -32,6 +34,6 @@ public:
     class ARHUD* MyVHUD;
 
     UPROPERTY()
-    class ARInventoryCharacter* VPlayer;
+    class ARInventoryCharacter* RPlayer;
 	
 };

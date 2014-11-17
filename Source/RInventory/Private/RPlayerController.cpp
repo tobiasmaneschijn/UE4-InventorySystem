@@ -8,15 +8,19 @@
 void ARPlayerController::PostInitializeComponents()
 {
     Super::PostInitializeComponents();
+}
 
+void ARPlayerController::SetPawn(APawn* Pawn) {
+    Super::SetPawn(Pawn);
+
+    RPlayer = Cast<ARInventoryCharacter>(Pawn);
 }
 
 void ARPlayerController::BeginPlay()
 {
     Super::BeginPlay();
-
+    
     MyVHUD = Cast<ARHUD>(MyHUD);
-    VPlayer = Cast<ARInventoryCharacter>(Player);
 }
 
 void ARPlayerController::SetupInputComponent()
@@ -36,10 +40,9 @@ void ARPlayerController::ToggleInventoryScreen()
     }
 }
 
-void ARPlayerController::OnUse() {
-
-    GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Green, TEXT("PC ON USE!"));
-   FVector camLoc;
+void ARPlayerController::OnUse() 
+{    
+    FVector camLoc;
     FRotator camRot;
     GetPlayerViewPoint(camLoc, camRot);
 
@@ -60,25 +63,10 @@ void ARPlayerController::OnUse() {
 
     if(ARItem* UsableItem = Cast<ARItem>(Hit.GetActor()))
     {
-        if(VPlayer == NULL) {
-            VPlayer = Cast<ARInventoryCharacter>(Player);
-            UE_LOG(RLog, Warning, TEXT("VPLAYER NOT SET!"));
-        }
+        // TODO:: Have player place item in inventory
+     //   RPlayer->PickupItem
         //VPlayer->PickupItem(UsableItem);
         UsableItem->PickedUp(); // Notify Item its been picked up incase  it wants to do something special
         Cast<ARHUD>(MyHUD)->InventoryWidget->AddItem(UsableItem);
-
-        //	UE_LOG(ValhallaLog, Warning, TEXT("Actor's Name is %s"), *Hit.GetActor()->GetName());
     }
-    	if (Hit.Actor != NULL) {
-    	    UE_LOG(RLog, Warning, TEXT("Actor's Name is %s"), *Hit.GetActor()->GetName());
-        }
-        else {
-            UE_LOG(RLog, Warning, TEXT("Actor was NULL"));
-        }
-    //else {
-    //	UE_LOG(ValhallaLog, Warning, TEXT("No Actor"));
-    //}
-    //return DidTrace;
-
 }

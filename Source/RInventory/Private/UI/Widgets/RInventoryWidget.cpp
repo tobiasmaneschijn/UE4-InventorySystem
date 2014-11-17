@@ -4,13 +4,16 @@
 #include "RItem.h"
 #include "RInventoryWidget.h"
 
-void URInventoryWidget::AddItem(ARItem* Item) {
+URInventoryWidget::URInventoryWidget(const FObjectInitializer& ObjectInitializer):
+    Super(ObjectInitializer)
+{
+    bInventoryChanged = false;
+    bRebuildGridLayout = true;
+}
 
-    UE_LOG(RLog, Warning, TEXT("Added Item!"));
-
-    ItemList.Add(FRItemData(Item->Name));
-
-    OnAddItem(Item); // Notify blueprints of added Item
+void URInventoryWidget::AddItem(ARItem* Item)
+{
+    ItemList.Add(FRItemInfo(Item->Name, "Derpy Dessription", FSlateBrush()));
 
     bInventoryChanged = true;
 }
@@ -18,16 +21,19 @@ void URInventoryWidget::AddItem(ARItem* Item) {
 void URInventoryWidget::PostInitProperties() {
     Super::PostInitProperties();
 
-    Items.Reserve(MaxInventorySlots);
+//    Items.Reserve(MaxInventorySlots);
 }
 
 void URInventoryWidget::ToggleVisibility()
 {
-    UE_LOG(RLog, Warning, TEXT("INventoryWidget Toggle Visibility!"));
     if(bInventoryChanged) {
-        UE_LOG(RLog, Warning, TEXT("Reset Layout!"));
         OnResetLayout();
         bInventoryChanged = false;
+    }
+
+    if(bRebuildGridLayout) {
+        RebuildGridLayout();
+        bRebuildGridLayout = false;
     }
     Super::ToggleVisibility();
 }
