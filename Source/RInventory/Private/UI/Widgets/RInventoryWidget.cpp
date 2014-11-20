@@ -13,7 +13,7 @@ URInventoryWidget::URInventoryWidget(const FObjectInitializer& ObjectInitializer
 
 void URInventoryWidget::AddItem(ARItem* Item)
 {
-    ItemList.Add(FRItemInfo(Item->Name, "Derpy Dessription", FSlateBrush()));
+   // ItemList.Add(FRItemInfo(Item->Name, "Derpy Dessription", FSlateBrush()));
 
     bInventoryChanged = true;
 }
