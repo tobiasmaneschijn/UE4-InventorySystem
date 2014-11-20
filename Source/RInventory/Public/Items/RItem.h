@@ -13,9 +13,10 @@
 UCLASS()
 class RINVENTORY_API ARItem : public AActor
 {
-    GENERATED_UCLASS_BODY()
+    GENERATED_BODY()
 	
 public:
+    ARItem(const FObjectInitializer& ObjectInitializer);
 
     UFUNCTION()
     void PickedUp();

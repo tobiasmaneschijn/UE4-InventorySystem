@@ -12,10 +12,10 @@
 UCLASS()
 class RINVENTORY_API URInventoryWidget : public URWidget
 {
-	GENERATED_UCLASS_BODY()
-	
-public:
+	GENERATED_BODY()
 
+public:
+    URInventoryWidget(const FObjectInitializer& ObjectInitializer);
     void PostInitProperties() override;
 
     UFUNCTION(Category = "Items")
