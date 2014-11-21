@@ -13,9 +13,11 @@ URInventoryWidget::URInventoryWidget(const FObjectInitializer& ObjectInitializer
 
 void URInventoryWidget::AddItem(ARItem* Item)
 {
-   // ItemList.Add(FRItemInfo(Item->Name, "Derpy Dessription", FSlateBrush()));
+    ItemList.Add(FRItemInfo(Item->Name, "Derpy Dessription", FSlateBrush()));
 
     bInventoryChanged = true;
+
+    //OnAddedItem();
 }
 
 void URInventoryWidget::PostInitProperties() {
@@ -38,3 +40,6 @@ void URInventoryWidget::ToggleVisibility()
     Super::ToggleVisibility();
 }
 
+void URInventoryWidget::SetInventory(TArray<FRInventorySlot> ItemArray) {
+   // Items = ItemArray;
+}

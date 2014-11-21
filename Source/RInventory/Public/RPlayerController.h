@@ -35,5 +35,7 @@ public:
 
     UPROPERTY()
     class ARInventoryCharacter* RPlayer;
-	
+
+    UFUNCTION(BlueprintCallable, Category = PlayerController)
+        virtual ARInventoryCharacter* GetRCharacter();	
 };

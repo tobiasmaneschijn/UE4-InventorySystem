@@ -25,6 +25,9 @@ public:
     void OnResetLayout();
 
     UFUNCTION(BlueprintImplementableEvent, Category = "Events")
+    void OnAddedItem(FRItemInfo ItemInfo);
+
+    UFUNCTION(BlueprintImplementableEvent, Category = "Events")
     void RebuildGridLayout();
 
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
@@ -41,6 +44,8 @@ public:
     bool bRebuildGridLayout;
 
     void ToggleVisibility() override;
+
+    void SetInventory(TArray<FRInventorySlot> ItemArray);
 	
 	
 };

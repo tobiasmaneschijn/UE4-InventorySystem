@@ -63,10 +63,20 @@ void ARPlayerController::OnUse()
 
     if(ARItem* UsableItem = Cast<ARItem>(Hit.GetActor()))
     {
-        // TODO:: Have player place item in inventory
-     //   RPlayer->PickupItem
-        //VPlayer->PickupItem(UsableItem);
-        UsableItem->PickedUp(); // Notify Item its been picked up incase  it wants to do something special
-        Cast<ARHUD>(MyHUD)->InventoryWidget->AddItem(UsableItem);
+        /*
+                UsableItem->PickedUp();
+        */
+        // notify player they've picked an item up
+        RPlayer->PickupItem(UsableItem);
+
+        // update HUD
+      //  FRInventorySlot Slot;
+      //  Slot.ItemName = UsableItem->ItemInfo.ItemName;
+        // Notify hud Inventory is dirty so next time its opened, it'll get rebuilt
+        Cast<ARHUD>(MyHUD)->MarkInventoryWidgetDirty(); //InventoryWidget->AddItem(UsableItem);
     }
+}
+
+ARInventoryCharacter* ARPlayerController::GetRCharacter() {
+    return RPlayer;
 }

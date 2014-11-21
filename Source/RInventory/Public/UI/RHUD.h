@@ -26,5 +26,12 @@ public:
 
     UPROPERTY()
     URInventoryWidget* InventoryWidget;
+
+    void MarkInventoryWidgetDirty();
+
+protected:
+    class ARPlayerController* RPlayerOwner;
+
+    bool bIsInventoryWidgetDirty;
 	
 };

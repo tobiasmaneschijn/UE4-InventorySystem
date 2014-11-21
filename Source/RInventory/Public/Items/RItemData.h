@@ -31,12 +31,46 @@ public:
 
     }
 
-    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Item Info")
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item Info")
     FName ItemName;
 
-    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Item Info")
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item Info")
     FString ItemDescription;
 	
-    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Item Info")
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item Info")
     FSlateBrush ItemIcon;
+};
+
+/**
+*
+*/
+USTRUCT(BlueprintType)
+struct FRInventorySlot
+{
+    GENERATED_USTRUCT_BODY()
+
+public:
+
+    // The index of slot this item takes up in inventory
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item Info")
+    uint8 SlotIndex;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item Info")
+    FName ItemName;
+};
+
+
+/** Structure to store the lookup of GameObjects for use in a UDataTable */
+USTRUCT(Blueprintable)
+struct FRItemTable : public FTableRowBase
+{
+    GENERATED_USTRUCT_BODY()
+
+    /** Full Path of Blueprint */
+    UPROPERTY(BlueprintReadOnly, Category = "GO")
+    FString ItemName;
+
+    /** Category of GamePlay Object */
+    UPROPERTY(BlueprintReadOnly, Category = "GO")
+    FString ItemsDescription;
 };
