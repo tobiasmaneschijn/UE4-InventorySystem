@@ -16,22 +16,23 @@ class RINVENTORY_API URInventoryWidget : public URWidget
 
 public:
     URInventoryWidget(const FObjectInitializer& ObjectInitializer);
+
     void PostInitProperties() override;
 
     UFUNCTION(Category = "Items")
-    void AddItem(class ARItem* Item);
+    void AddItem(class ARItem* Item, int32 SlotIndex);
 
     UFUNCTION(BlueprintImplementableEvent, Category = "Events")
     void OnResetLayout();
+
+    UFUNCTION(BlueprintImplementableEvent, Category = "Events")
+    void OnPopulateGrid();
 
     UFUNCTION(BlueprintImplementableEvent, Category = "Events")
     void OnAddedItem(FRItemInfo ItemInfo);
 
     UFUNCTION(BlueprintImplementableEvent, Category = "Events")
     void RebuildGridLayout();
-
-    UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
-    TArray<FRItemInfo> ItemList;
 
     UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Inventory Layout", Meta = (DisplayName = "Total Slots"))
     int32 MaxInventorySlots;
@@ -45,7 +46,11 @@ public:
 
     void ToggleVisibility() override;
 
-    void SetInventory(TArray<FRInventorySlot> ItemArray);
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+        TArray<FRItemInfo> ItemList;
+
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+    TArray<FRItemInventorySlot> Inventory;
 	
 	
 };

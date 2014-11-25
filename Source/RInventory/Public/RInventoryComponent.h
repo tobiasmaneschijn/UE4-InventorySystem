@@ -22,14 +22,16 @@ public:
     virtual void InitializeComponent() override;
     virtual void BeginDestroy() override;
 	
-    void AddItem(FRItemInfo ItemInfo);
+    int32 AddItem(class ARItem* Item);
 
     TArray<FRInventorySlot> Inventory;
 
-    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inventory Grid")
-    uint8 MaxInventorySlots;
+    TArray<class FRItem*> Items; // Inventory Component owns the items.
 
-    uint8 GetEmptySlot();
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inventory Grid")
+    int32 MaxInventorySlots;
+
+    int32 GetEmptySlot();
 
     TArray<FRInventorySlot> GetItems() const;
 };

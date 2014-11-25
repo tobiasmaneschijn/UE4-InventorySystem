@@ -23,7 +23,8 @@ public:
     UFUNCTION(BlueprintCallable, Category = Inventory)
     uint8 GetNumInventorySlots();
 
-    void PickupItem(class ARItem * Item);
+    // returns the slot item was placed in
+    int32 PickupItem(class ARItem * Item);
 
     TArray<FRInventorySlot> GetInventory() const;
 

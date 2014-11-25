@@ -136,11 +136,10 @@ void ARInventoryCharacter::MoveRight(float Value)
 	}
 }
 
-void ARInventoryCharacter::PickupItem(ARItem * Item) {
-    FRItemInfo ItemInfo;
-    ItemInfo.ItemName = Item->Name;
-    
-    Equipment->AddItem(ItemInfo);
+int32 ARInventoryCharacter::PickupItem(ARItem * Item) {    
+
+    // grab slot the item was placed into...
+    return Equipment->AddItem(Item);
 }
 
 void ARInventoryCharacter::SetMaxInventorySlots(uint8 NumSlots) {

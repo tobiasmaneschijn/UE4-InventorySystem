@@ -60,20 +60,14 @@ void ARPlayerController::OnUse()
 
     DrawDebugLine(GetWorld(), start_trace, end_trace, FColor(0, 0, 255), true, 1);
 
-
     if(ARItem* UsableItem = Cast<ARItem>(Hit.GetActor()))
     {
-        /*
-                UsableItem->PickedUp();
-        */
-        // notify player they've picked an item up
-        RPlayer->PickupItem(UsableItem);
+        int32 InventorySlot = RPlayer->PickupItem(UsableItem);
 
-        // update HUD
-      //  FRInventorySlot Slot;
-      //  Slot.ItemName = UsableItem->ItemInfo.ItemName;
-        // Notify hud Inventory is dirty so next time its opened, it'll get rebuilt
-        Cast<ARHUD>(MyHUD)->MarkInventoryWidgetDirty(); //InventoryWidget->AddItem(UsableItem);
+        // Did player actually pickup the item?
+        if(InventorySlot > -1) {
+            Cast<ARHUD>(MyHUD)->AddItemToInventory(UsableItem, InventorySlot);
+        }
     }
 }
 

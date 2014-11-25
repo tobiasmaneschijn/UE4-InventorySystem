@@ -26,11 +26,7 @@ void ARHUD::ToggleInventoryScreen()
 {
     if(bIsInventoryWidgetDirty) {
         // get item list from player inventory
-        TArray<FRInventorySlot> ItemArray;
-        ItemArray = RPlayerOwner->GetRCharacter()->GetInventory();
-
-        InventoryWidget->SetInventory(ItemArray);
-        bIsInventoryWidgetDirty = false;
+     //   bIsInventoryWidgetDirty = false;
     }
     // Do we need to rebuild the inventory widget...?
   //  if(InventoryWidget->IsGridDirty()) {
@@ -39,6 +35,6 @@ void ARHUD::ToggleInventoryScreen()
     InventoryWidget->ToggleVisibility();
 }
 
-void ARHUD::MarkInventoryWidgetDirty() {
-    bIsInventoryWidgetDirty = true;
+void ARHUD::AddItemToInventory(class ARItem* Item, int32 InventorySlot) {
+    InventoryWidget->AddItem(Item, InventorySlot);
 }

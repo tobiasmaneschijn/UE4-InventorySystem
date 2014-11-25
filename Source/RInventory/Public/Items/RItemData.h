@@ -50,27 +50,52 @@ struct FRInventorySlot
     GENERATED_USTRUCT_BODY()
 
 public:
-
+    FRInventorySlot():
+        SlotIndex(0),
+        ItemName("Item Name Not Set")
+    {
+    }
     // The index of slot this item takes up in inventory
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item Info")
-    uint8 SlotIndex;
+    int32 SlotIndex;
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item Info")
     FName ItemName;
 };
 
 
-/** Structure to store the lookup of GameObjects for use in a UDataTable */
-USTRUCT(Blueprintable)
-struct FRItemTable : public FTableRowBase
+/**
+ *
+ * This is a slot in the inventory of UI Widget. It contains all data needed to display an item if hovered.
+ *
+**/
+USTRUCT(BlueprintType)
+struct FRItemInventorySlot 
 {
     GENERATED_USTRUCT_BODY()
 
-    /** Full Path of Blueprint */
-    UPROPERTY(BlueprintReadOnly, Category = "GO")
-    FString ItemName;
+public:
+    FRItemInventorySlot():
+        ItemName("Default Name"),
+        ItemIcon(),
+        bIsEmpty(true)
+    {
 
-    /** Category of GamePlay Object */
-    UPROPERTY(BlueprintReadOnly, Category = "GO")
-    FString ItemsDescription;
+    }
+
+    FRItemInventorySlot(FName Name, int32 Index):
+        ItemName(Name),
+        bIsEmpty(true)
+    {
+
+    }
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item Inventory")
+    FName ItemName;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item Inventory")
+    FSlateBrush ItemIcon;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item Inventory")
+    bool bIsEmpty;
 };

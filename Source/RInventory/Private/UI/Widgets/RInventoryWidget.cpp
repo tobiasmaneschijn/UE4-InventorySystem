@@ -4,17 +4,22 @@
 #include "RItem.h"
 #include "RInventoryWidget.h"
 
-URInventoryWidget::URInventoryWidget(const FObjectInitializer& ObjectInitializer):
+URInventoryWidget::URInventoryWidget(const FObjectInitializer& ObjectInitializer) :
     Super(ObjectInitializer)
 {
     bInventoryChanged = false;
     bRebuildGridLayout = true;
 }
 
-void URInventoryWidget::AddItem(ARItem* Item)
+void URInventoryWidget::AddItem(ARItem* Item, int32 SlotIndex)
 {
-    ItemList.Add(FRItemInfo(Item->Name, "Derpy Dessription", FSlateBrush()));
+    FRItemInventorySlot Slot;
+    Slot.ItemName = Item->Name;
+    Slot.bIsEmpty = false;
 
+    Inventory[SlotIndex] = Slot;
+
+  //  Inventory[ItemInfo->]
     bInventoryChanged = true;
 
     //OnAddedItem();
@@ -23,13 +28,21 @@ void URInventoryWidget::AddItem(ARItem* Item)
 void URInventoryWidget::PostInitProperties() {
     Super::PostInitProperties();
 
-//    Items.Reserve(MaxInventorySlots);
+    Inventory.Reserve(MaxInventorySlots);
+
+    for(int32 CurrentSlot = 0; CurrentSlot < MaxInventorySlots; ++CurrentSlot) 
+    {
+        FRItemInventorySlot Slot;
+        Inventory.Add(Slot);
+    }
 }
 
 void URInventoryWidget::ToggleVisibility()
 {
     if(bInventoryChanged) {
-        OnResetLayout();
+        UE_LOG(RLog, Warning, TEXT("Toggle Vis bInvchanged - InventoryWidget"));
+        OnPopulateGrid();
+
         bInventoryChanged = false;
     }
 
@@ -38,8 +51,4 @@ void URInventoryWidget::ToggleVisibility()
         bRebuildGridLayout = false;
     }
     Super::ToggleVisibility();
-}
-
-void URInventoryWidget::SetInventory(TArray<FRInventorySlot> ItemArray) {
-   // Items = ItemArray;
 }

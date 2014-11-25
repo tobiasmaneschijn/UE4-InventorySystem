@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "RInventory.h"
+#include "RItem.h"
 #include "RInventoryComponent.h"
 
 URInventoryComponent::URInventoryComponent(const FObjectInitializer& ObjectInitializer):
@@ -15,12 +16,12 @@ void URInventoryComponent::InitializeComponent()
     Super::InitializeComponent();
 
     Inventory.Reserve(MaxInventorySlots);
-    for(uint8 CurrentSlot = 0; CurrentSlot < MaxInventorySlots; ++CurrentSlot)
+    for(int32 CurrentSlot = 0; CurrentSlot < MaxInventorySlots; ++CurrentSlot)
     {
         FRInventorySlot Slot;
         Slot.ItemName = "Empty Item";
    //     Slot.ItemDescription = "No Description";
-        Slot.SlotIndex = CurrentSlot;
+        Slot.SlotIndex = -1; // set it as not set
         Inventory.Add(Slot);
     }
 }
@@ -29,25 +30,33 @@ void URInventoryComponent::BeginDestroy() {
     Super::BeginDestroy();
 }
 
-void URInventoryComponent::AddItem(FRItemInfo ItemInfo) {
-    // find an empty inventory slot
-    uint8 EmptySlot = GetEmptySlot();
+int32 URInventoryComponent::AddItem(ARItem* Item) {
 
-    if(EmptySlot == MaxInventorySlots) {
+    // find an empty inventory slot
+    int32 EmptySlot = GetEmptySlot();
+
+    UE_LOG(RLog, Warning, TEXT("URInventoryComponent[AddSlot] Empty Slot: %d "), EmptySlot);
+
+    if(EmptySlot == -1) {
         // failed
         // blow up
-        return;
+        return -1;
     }
+    
     FRInventorySlot Slot;
-    Slot.ItemName = ItemInfo.ItemName;
+    Slot.ItemName = Item->Name;
     Slot.SlotIndex = EmptySlot;
     Inventory[EmptySlot] = Slot;
+
+    // add item to Items array
+
+    return EmptySlot;
 }
 
-uint8 URInventoryComponent::GetEmptySlot() {
-    for(uint8 CurrentSlot = 0; CurrentSlot < MaxInventorySlots; ++CurrentSlot)
+int32 URInventoryComponent::GetEmptySlot() {
+    for(int32 CurrentSlot = 0; CurrentSlot < MaxInventorySlots; ++CurrentSlot)
     {
-        if(Inventory[CurrentSlot].SlotIndex == 0)
+        if(Inventory[CurrentSlot].SlotIndex == -1)
         {
             return CurrentSlot;
         }

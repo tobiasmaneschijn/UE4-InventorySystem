@@ -27,7 +27,7 @@ public:
     UPROPERTY()
     URInventoryWidget* InventoryWidget;
 
-    void MarkInventoryWidgetDirty();
+    void AddItemToInventory(class ARItem* Item, int32 InventorySlot);
 
 protected:
     class ARPlayerController* RPlayerOwner;
