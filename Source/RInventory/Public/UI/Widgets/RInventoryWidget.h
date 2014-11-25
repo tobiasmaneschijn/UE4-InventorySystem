@@ -23,16 +23,13 @@ public:
     void AddItem(class ARItem* Item, int32 SlotIndex);
 
     UFUNCTION(BlueprintImplementableEvent, Category = "Events")
-    void OnResetLayout();
-
-    UFUNCTION(BlueprintImplementableEvent, Category = "Events")
-    void OnPopulateGrid();
+    void OnPopulateInventoryGrid();
 
     UFUNCTION(BlueprintImplementableEvent, Category = "Events")
     void OnAddedItem(FRItemInfo ItemInfo);
 
     UFUNCTION(BlueprintImplementableEvent, Category = "Events")
-    void RebuildGridLayout();
+    void OnInventoryGridSlotCountChanged();
 
     UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Inventory Layout", Meta = (DisplayName = "Total Slots"))
     int32 MaxInventorySlots;

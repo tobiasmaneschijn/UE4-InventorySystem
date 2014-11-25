@@ -40,14 +40,13 @@ void URInventoryWidget::PostInitProperties() {
 void URInventoryWidget::ToggleVisibility()
 {
     if(bInventoryChanged) {
-        UE_LOG(RLog, Warning, TEXT("Toggle Vis bInvchanged - InventoryWidget"));
-        OnPopulateGrid();
+        OnPopulateInventoryGrid(); // Redraw item icons
 
         bInventoryChanged = false;
     }
 
     if(bRebuildGridLayout) {
-        RebuildGridLayout();
+        OnInventoryGridSlotCountChanged(); // Called when slot count has changed
         bRebuildGridLayout = false;
     }
     Super::ToggleVisibility();
