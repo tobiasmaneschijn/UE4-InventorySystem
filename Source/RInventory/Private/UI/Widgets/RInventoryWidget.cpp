@@ -9,6 +9,8 @@ URInventoryWidget::URInventoryWidget(const FObjectInitializer& ObjectInitializer
 {
     bInventoryChanged = false;
     bRebuildGridLayout = true;
+
+
 }
 
 void URInventoryWidget::AddItem(ARItem* Item, int32 SlotIndex)
@@ -17,6 +19,7 @@ void URInventoryWidget::AddItem(ARItem* Item, int32 SlotIndex)
     Slot.ItemName = Item->Name;
     Slot.bIsEmpty = false;
 
+    UE_LOG(RLog, Warning, TEXT("URInventoryWidget[AddItem] slot: %d"), SlotIndex);
     Inventory[SlotIndex] = Slot;
 
   //  Inventory[ItemInfo->]
@@ -35,6 +38,8 @@ void URInventoryWidget::PostInitProperties() {
         FRItemInventorySlot Slot;
         Inventory.Add(Slot);
     }
+
+    UE_LOG(RLog, Warning, TEXT("URInventoryWidget[PostInitProperties]"));
 }
 
 void URInventoryWidget::ToggleVisibility()

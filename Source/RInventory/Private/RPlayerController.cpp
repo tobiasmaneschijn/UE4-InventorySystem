@@ -35,7 +35,6 @@ void ARPlayerController::ToggleInventoryScreen()
 {
     if(MyHUD != NULL && Cast<ARHUD>(MyHUD) != NULL)
     {
-        UE_LOG(RLog, Warning, TEXT("PC Toggle"));
         Cast<ARHUD>(MyHUD)->ToggleInventoryScreen();
     }
 }

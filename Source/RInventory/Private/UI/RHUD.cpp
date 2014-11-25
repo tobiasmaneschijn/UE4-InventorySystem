@@ -15,6 +15,10 @@ void ARHUD::PostInitializeComponents()
     if(InventoryWidgetType)
     {
         InventoryWidget = CreateWidget<URInventoryWidget>(GetWorld(), InventoryWidgetType);
+
+        // TODO:: Fix this silly hack. Without it Items would only start to show up in Inventory Screen after Toggled once.
+        InventoryWidget->ToggleVisibility();
+        InventoryWidget->ToggleVisibility();
     }
     else
     {
@@ -24,14 +28,6 @@ void ARHUD::PostInitializeComponents()
 
 void ARHUD::ToggleInventoryScreen()
 {
-    if(bIsInventoryWidgetDirty) {
-        // get item list from player inventory
-     //   bIsInventoryWidgetDirty = false;
-    }
-    // Do we need to rebuild the inventory widget...?
-  //  if(InventoryWidget->IsGridDirty()) {
-     //   InventoryWidget->IsDirty();
-   // }
     InventoryWidget->ToggleVisibility();
 }
 

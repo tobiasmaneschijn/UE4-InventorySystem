@@ -4,8 +4,8 @@
 #include "RItem.h"
 #include "RInventoryComponent.h"
 
-URInventoryComponent::URInventoryComponent(const FObjectInitializer& ObjectInitializer):
-Super(ObjectInitializer)
+URInventoryComponent::URInventoryComponent(const FObjectInitializer& ObjectInitializer) :
+    Super(ObjectInitializer)
 {
     MaxInventorySlots = 50;
 }

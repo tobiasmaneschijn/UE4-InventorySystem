@@ -15,6 +15,8 @@ class RINVENTORY_API URWidget : public UUserWidget
 	
 public:
 
+    URWidget(const FObjectInitializer& ObjectInitializer);
+
     virtual void ToggleVisibility();
 
     UFUNCTION(BlueprintImplementableEvent, Category = "Events")
@@ -22,6 +24,8 @@ public:
 
     UFUNCTION(BlueprintImplementableEvent, Category = "Events")
     void OnRemovedFromViewport();
+
+    bool bHasBeenAddedToGameViewport;
 
 	
 };
