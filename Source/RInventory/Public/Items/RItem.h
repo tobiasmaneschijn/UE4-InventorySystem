@@ -26,17 +26,11 @@ public:
 
     void BeginPlay() override;
 
-    UPROPERTY()
-    FRItemInfo ItemInfo;
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item Info")
+    FRItemDisplayInfo DisplayInfo;
 
-    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Item")
-    FString ItemName;
-
-    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Item")
-    FString Description;
-
-    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Item")
-    FSlateBrush ItemIcon;
+ //   UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Item")
+ //   FSlateBrush ItemIcon;
 
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Item")
     bool bIsEquipable;

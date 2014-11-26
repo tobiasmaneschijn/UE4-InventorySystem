@@ -9,13 +9,13 @@
  * 
  */
 USTRUCT(BlueprintType)
-struct FRItemInfo
+struct FRItemDisplayInfo
 {
 	GENERATED_USTRUCT_BODY()
 	
 public:
 
-    FRItemInfo() :
+    FRItemDisplayInfo():
         ItemName("Default Item Name"),
         ItemDescription("Default Item Description"),
         ItemIcon()
@@ -23,7 +23,7 @@ public:
 
     }
     
-    FRItemInfo(FName Name, FString Description, FSlateBrush Icon) :
+    FRItemDisplayInfo(FString Name, FString Description, FSlateBrush Icon):
         ItemName(Name),
         ItemDescription(Description),
         ItemIcon(Icon)
@@ -32,7 +32,7 @@ public:
     }
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item Info")
-    FName ItemName;
+    FString ItemName;
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item Info")
     FString ItemDescription;
@@ -50,20 +50,17 @@ struct FRInventorySlot
     GENERATED_USTRUCT_BODY()
 
 public:
-    FRInventorySlot():
-        SlotIndex(-1),
-        ItemName("Item Name Not Set"),
-        ItemIcon()
+    FRInventorySlot() :
+        DisplayInfo(),
+        SlotIndex(-1)
     {
     }
+
+    // Basic info about item like name, description, and icon
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item Info")
+    FRItemDisplayInfo DisplayInfo;
+
     // The index of slot this item takes up in inventory
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item Info")
     int32 SlotIndex;
-
-    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item Info")
-    FString ItemName;
-
-    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item Inventory")
-    FSlateBrush ItemIcon;
-
 };

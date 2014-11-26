@@ -19,8 +19,6 @@ void URInventoryComponent::InitializeComponent()
     for(int32 CurrentSlot = 0; CurrentSlot < MaxInventorySlots; ++CurrentSlot)
     {
         FRInventorySlot Slot;
-        Slot.ItemName = "Empty Item";
-   //     Slot.ItemDescription = "No Description";
         Slot.SlotIndex = -1; // set it as not set
         Inventory.Add(Slot);
     }
@@ -44,9 +42,9 @@ int32 URInventoryComponent::AddItem(ARItem* Item) {
     }
     
     FRInventorySlot Slot;
-    Slot.ItemName = Item->ItemName;
+    Slot.DisplayInfo.ItemName = Item->DisplayInfo.ItemName;
     Slot.SlotIndex = EmptySlot;
-    Slot.ItemIcon = Item->ItemIcon;
+    Slot.DisplayInfo.ItemIcon = Item->DisplayInfo.ItemIcon;
     Inventory[EmptySlot] = Slot;
 
     // add item to Items array
