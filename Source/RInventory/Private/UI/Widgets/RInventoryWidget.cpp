@@ -9,32 +9,11 @@ URInventoryWidget::URInventoryWidget(const FObjectInitializer& ObjectInitializer
 {
     bInventoryChanged = false;
     bRebuildGridLayout = true;
-
-
 }
 
 void URInventoryWidget::Construct_Implementation() 
 {
-    Inventory.Reserve(MaxInventorySlots);
 
-    // make grid blank initially
-    for(int32 CurrentSlot = 0; CurrentSlot < MaxInventorySlots; ++CurrentSlot)
-    {
-        FRItemInventorySlot Slot;
-        Inventory.Add(Slot);
-    }
-}
-
-void URInventoryWidget::AddItem(ARItem* Item, int32 SlotIndex)
-{
-    FRItemInventorySlot Slot;
-    Slot.ItemName = Item->ItemName;
-    Slot.bIsEmpty = false;
-    Slot.ItemIcon = Item->ItemIcon;
-
-    Inventory[SlotIndex] = Slot;
-
-    bInventoryChanged = true;
 }
 
 void URInventoryWidget::PostInitProperties() {
@@ -43,8 +22,11 @@ void URInventoryWidget::PostInitProperties() {
 
 void URInventoryWidget::ToggleVisibility()
 {
+    GEngine->AddOnScreenDebugMessage(-1, 2, FColor::Green, TEXT("ToggleVisibility"));
+
     if(bInventoryChanged) {
         OnPopulateInventoryGrid(); // Redraw item icons
+        GEngine->AddOnScreenDebugMessage(-1, 2, FColor::Green, TEXT("iv changed!"));
 
         bInventoryChanged = false;
     }
@@ -54,4 +36,9 @@ void URInventoryWidget::ToggleVisibility()
         bRebuildGridLayout = false;
     }
     Super::ToggleVisibility();
+}
+
+void URInventoryWidget::MarkInventoryChanged()
+{
+    bInventoryChanged = true;
 }

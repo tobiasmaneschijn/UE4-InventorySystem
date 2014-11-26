@@ -46,6 +46,7 @@ int32 URInventoryComponent::AddItem(ARItem* Item) {
     FRInventorySlot Slot;
     Slot.ItemName = Item->ItemName;
     Slot.SlotIndex = EmptySlot;
+    Slot.ItemIcon = Item->ItemIcon;
     Inventory[EmptySlot] = Slot;
 
     // add item to Items array

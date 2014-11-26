@@ -20,8 +20,7 @@ public:
     void Construct_Implementation() override;    
     void PostInitProperties() override;
 
-    UFUNCTION(Category = "Items")
-    void AddItem(class ARItem* Item, int32 SlotIndex);
+    void MarkInventoryChanged();
 
     UFUNCTION(BlueprintImplementableEvent, Category = "Events")
     void OnPopulateInventoryGrid();
@@ -40,9 +39,4 @@ public:
     bool bRebuildGridLayout;
 
     void ToggleVisibility() override;
-
-    UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
-    TArray<FRItemInventorySlot> Inventory;
-	
-	
 };

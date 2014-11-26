@@ -24,6 +24,7 @@ public:
 	
     int32 AddItem(class ARItem* Item);
 
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inventory")
     TArray<FRInventorySlot> Inventory;
 
     TArray<class FRItem*> Items; // Inventory Component owns the items.

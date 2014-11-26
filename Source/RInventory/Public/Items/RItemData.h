@@ -42,7 +42,7 @@ public:
 };
 
 /**
-*
+* This is a slot within InventoryComponent
 */
 USTRUCT(BlueprintType)
 struct FRInventorySlot
@@ -51,8 +51,9 @@ struct FRInventorySlot
 
 public:
     FRInventorySlot():
-        SlotIndex(0),
-        ItemName("Item Name Not Set")
+        SlotIndex(-1),
+        ItemName("Item Name Not Set"),
+        ItemIcon()
     {
     }
     // The index of slot this item takes up in inventory
@@ -60,43 +61,9 @@ public:
     int32 SlotIndex;
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item Info")
-    FName ItemName;
-};
-
-
-/**
- *
- * This is a slot in the inventory of UI Widget. It contains all data needed to display an item if hovered.
- *
-**/
-USTRUCT(BlueprintType)
-struct FRItemInventorySlot 
-{
-    GENERATED_USTRUCT_BODY()
-
-public:
-    FRItemInventorySlot():
-        ItemName("Default Name"),
-        ItemIcon(),
-        bIsEmpty(true)
-    {
-
-    }
-
-    FRItemInventorySlot(FName Name, int32 Index):
-        ItemName(Name),
-        ItemIcon(),
-        bIsEmpty(true)
-    {
-
-    }
-
-    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item Inventory")
-    FName ItemName;
+    FString ItemName;
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item Inventory")
     FSlateBrush ItemIcon;
 
-    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item Inventory")
-    bool bIsEmpty;
 };

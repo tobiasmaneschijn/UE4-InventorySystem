@@ -29,6 +29,8 @@ public:
 
     void AddItemToInventory(class ARItem* Item, int32 InventorySlot);
 
+    void MarkInventoryAsChanged();
+
 protected:
     class ARPlayerController* RPlayerOwner;
 

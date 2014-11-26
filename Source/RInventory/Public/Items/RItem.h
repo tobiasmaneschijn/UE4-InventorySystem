@@ -30,7 +30,7 @@ public:
     FRItemInfo ItemInfo;
 
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Item")
-    FName ItemName;
+    FString ItemName;
 
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Item")
     FString Description;

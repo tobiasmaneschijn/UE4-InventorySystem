@@ -31,6 +31,6 @@ void ARHUD::ToggleInventoryScreen()
     InventoryWidget->ToggleVisibility();
 }
 
-void ARHUD::AddItemToInventory(class ARItem* Item, int32 InventorySlot) {
-    InventoryWidget->AddItem(Item, InventorySlot);
+void ARHUD::MarkInventoryAsChanged() {
+    InventoryWidget->MarkInventoryChanged();
 }
