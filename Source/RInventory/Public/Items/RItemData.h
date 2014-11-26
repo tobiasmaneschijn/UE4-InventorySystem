@@ -85,6 +85,7 @@ public:
 
     FRItemInventorySlot(FName Name, int32 Index):
         ItemName(Name),
+        ItemIcon(),
         bIsEmpty(true)
     {
 

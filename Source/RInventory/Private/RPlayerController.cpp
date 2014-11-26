@@ -62,10 +62,12 @@ void ARPlayerController::OnUse()
     if(ARItem* UsableItem = Cast<ARItem>(Hit.GetActor()))
     {
         int32 InventorySlot = RPlayer->PickupItem(UsableItem);
-
+        UsableItem->Description = Hit.GetActor()->GetName();
         // Did player actually pickup the item?
         if(InventorySlot > -1) {
             Cast<ARHUD>(MyHUD)->AddItemToInventory(UsableItem, InventorySlot);
+
+            UsableItem->PickedUp();
         }
     }
 }

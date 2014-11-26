@@ -17,6 +17,7 @@ class RINVENTORY_API URInventoryWidget : public URWidget
 public:
     URInventoryWidget(const FObjectInitializer& ObjectInitializer);
 
+    void Construct_Implementation() override;    
     void PostInitProperties() override;
 
     UFUNCTION(Category = "Items")
@@ -24,9 +25,6 @@ public:
 
     UFUNCTION(BlueprintImplementableEvent, Category = "Events")
     void OnPopulateInventoryGrid();
-
-    UFUNCTION(BlueprintImplementableEvent, Category = "Events")
-    void OnAddedItem(FRItemInfo ItemInfo);
 
     UFUNCTION(BlueprintImplementableEvent, Category = "Events")
     void OnInventoryGridSlotCountChanged();
@@ -42,9 +40,6 @@ public:
     bool bRebuildGridLayout;
 
     void ToggleVisibility() override;
-
-    UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
-        TArray<FRItemInfo> ItemList;
 
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
     TArray<FRItemInventorySlot> Inventory;

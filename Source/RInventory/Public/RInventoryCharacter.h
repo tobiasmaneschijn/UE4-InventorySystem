@@ -26,8 +26,6 @@ public:
     // returns the slot item was placed in
     int32 PickupItem(class ARItem * Item);
 
-    TArray<FRInventorySlot> GetInventory() const;
-
     /** Returns CameraBoom subobject **/
     FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
     /** Returns FollowCamera subobject **/

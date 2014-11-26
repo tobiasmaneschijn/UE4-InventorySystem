@@ -32,6 +32,4 @@ public:
     int32 MaxInventorySlots;
 
     int32 GetEmptySlot();
-
-    TArray<FRInventorySlot> GetItems() const;
 };

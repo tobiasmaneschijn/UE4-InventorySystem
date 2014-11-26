@@ -13,33 +13,32 @@ URInventoryWidget::URInventoryWidget(const FObjectInitializer& ObjectInitializer
 
 }
 
-void URInventoryWidget::AddItem(ARItem* Item, int32 SlotIndex)
+void URInventoryWidget::Construct_Implementation() 
 {
-    FRItemInventorySlot Slot;
-    Slot.ItemName = Item->Name;
-    Slot.bIsEmpty = false;
-
-    UE_LOG(RLog, Warning, TEXT("URInventoryWidget[AddItem] slot: %d"), SlotIndex);
-    Inventory[SlotIndex] = Slot;
-
-  //  Inventory[ItemInfo->]
-    bInventoryChanged = true;
-
-    //OnAddedItem();
-}
-
-void URInventoryWidget::PostInitProperties() {
-    Super::PostInitProperties();
-
     Inventory.Reserve(MaxInventorySlots);
 
-    for(int32 CurrentSlot = 0; CurrentSlot < MaxInventorySlots; ++CurrentSlot) 
+    // make grid blank initially
+    for(int32 CurrentSlot = 0; CurrentSlot < MaxInventorySlots; ++CurrentSlot)
     {
         FRItemInventorySlot Slot;
         Inventory.Add(Slot);
     }
+}
 
-    UE_LOG(RLog, Warning, TEXT("URInventoryWidget[PostInitProperties]"));
+void URInventoryWidget::AddItem(ARItem* Item, int32 SlotIndex)
+{
+    FRItemInventorySlot Slot;
+    Slot.ItemName = Item->ItemName;
+    Slot.bIsEmpty = false;
+    Slot.ItemIcon = Item->ItemIcon;
+
+    Inventory[SlotIndex] = Slot;
+
+    bInventoryChanged = true;
+}
+
+void URInventoryWidget::PostInitProperties() {
+    Super::PostInitProperties();
 }
 
 void URInventoryWidget::ToggleVisibility()

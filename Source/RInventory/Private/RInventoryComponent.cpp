@@ -44,7 +44,7 @@ int32 URInventoryComponent::AddItem(ARItem* Item) {
     }
     
     FRInventorySlot Slot;
-    Slot.ItemName = Item->Name;
+    Slot.ItemName = Item->ItemName;
     Slot.SlotIndex = EmptySlot;
     Inventory[EmptySlot] = Slot;
 
@@ -62,9 +62,5 @@ int32 URInventoryComponent::GetEmptySlot() {
         }
     }
 
-    return MaxInventorySlots; 
-}
-
-TArray<FRInventorySlot> URInventoryComponent::GetItems() const {
-    return Inventory;
+    return -1; 
 }

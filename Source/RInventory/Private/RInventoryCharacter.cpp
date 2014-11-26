@@ -157,7 +157,3 @@ void ARInventoryCharacter::SetNumInventorySlots(uint8 NumSlots) {
 uint8 ARInventoryCharacter::GetNumInventorySlots() {
     return 0;
 }
-
-TArray<FRInventorySlot> ARInventoryCharacter::GetInventory() const {
-    return Equipment->GetItems();
-}

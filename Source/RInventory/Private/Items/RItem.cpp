@@ -17,7 +17,7 @@ void ARItem::BeginPlay()
 
 void ARItem::PickedUp()
 {
-    StaticMesh->SetHiddenInGame(true);
+    Destroy();
 }
 
 void ARItem::Dropped()

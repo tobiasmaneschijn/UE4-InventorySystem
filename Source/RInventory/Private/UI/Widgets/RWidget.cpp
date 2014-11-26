@@ -8,6 +8,8 @@ URWidget::URWidget(const FObjectInitializer& ObjectInitializer) :
 {
     bHasBeenAddedToGameViewport = false;
 }
+
+
 void URWidget::ToggleVisibility()
 {
     if(GetIsVisible())
