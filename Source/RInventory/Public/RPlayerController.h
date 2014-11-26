@@ -33,7 +33,9 @@ public:
     UPROPERTY()
     class ARHUD* MyVHUD;
 
-    UPROPERTY()
+    UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category ="Player")
     class ARInventoryCharacter* RPlayer;
-	
+
+    UFUNCTION(BlueprintCallable, Category = PlayerController)
+        virtual ARInventoryCharacter* GetRCharacter();	
 };

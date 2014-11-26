@@ -3,7 +3,7 @@
 #include "RInventory.h"
 
 #include "RInventoryComponent.h"
-
+#include "RItem.h"
 #include "RInventoryCharacter.h"
 
 //////////////////////////////////////////////////////////////////////////
@@ -134,4 +134,26 @@ void ARInventoryCharacter::MoveRight(float Value)
 		// add movement in that direction
 		AddMovementInput(Direction, Value);
 	}
+}
+
+int32 ARInventoryCharacter::PickupItem(ARItem * Item) {    
+
+    // grab slot the item was placed into...
+    return Equipment->AddItem(Item);
+}
+
+void ARInventoryCharacter::SetMaxInventorySlots(uint8 NumSlots) {
+   // Equipment->SetMax
+}
+
+uint8 ARInventoryCharacter::GetMaxInventorySlots() {
+    return 0;
+}
+
+void ARInventoryCharacter::SetNumInventorySlots(uint8 NumSlots) {
+
+}
+
+uint8 ARInventoryCharacter::GetNumInventorySlots() {
+    return 0;
 }

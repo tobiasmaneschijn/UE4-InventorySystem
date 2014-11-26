@@ -9,6 +9,28 @@ class ARInventoryCharacter : public ACharacter
 	GENERATED_BODY()
 
 public:
+    ARInventoryCharacter(const FObjectInitializer& ObjectInitializer);
+
+    UFUNCTION(BlueprintCallable, Category = Inventory)
+    void SetMaxInventorySlots(uint8 NumSlots);
+
+    UFUNCTION(BlueprintCallable, Category = Inventory)
+    uint8 GetMaxInventorySlots();
+
+    UFUNCTION(BlueprintCallable, Category = Inventory)
+    void SetNumInventorySlots(uint8 NumSlots);
+
+    UFUNCTION(BlueprintCallable, Category = Inventory)
+    uint8 GetNumInventorySlots();
+
+    // returns the slot item was placed in
+    int32 PickupItem(class ARItem * Item);
+
+    /** Returns CameraBoom subobject **/
+    FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
+    /** Returns FollowCamera subobject **/
+    FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
+
 	/** Camera boom positioning the camera behind the character */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	class USpringArmComponent* CameraBoom;
@@ -17,9 +39,8 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	class UCameraComponent* FollowCamera;
 
-    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Attributes")
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Inventory)
     class URInventoryComponent* Equipment;
-	ARInventoryCharacter(const FObjectInitializer& ObjectInitializer);
 
 	/** Base turn rate, in deg/sec. Other scaling may affect final turn rate. */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Camera)
@@ -55,15 +76,8 @@ protected:
 	/** Handler for when a touch input stops. */
 	void TouchStopped(ETouchIndex::Type FingerIndex, FVector Location);
 
-protected:
 	// APawn interface
 	virtual void SetupPlayerInputComponent(class UInputComponent* InputComponent) override;
 	// End of APawn interface
-
-public:
-	/** Returns CameraBoom subobject **/
-	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
-	/** Returns FollowCamera subobject **/
-	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
 };
 

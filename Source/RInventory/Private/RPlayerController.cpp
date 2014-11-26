@@ -35,7 +35,6 @@ void ARPlayerController::ToggleInventoryScreen()
 {
     if(MyHUD != NULL && Cast<ARHUD>(MyHUD) != NULL)
     {
-        UE_LOG(RLog, Warning, TEXT("PC Toggle"));
         Cast<ARHUD>(MyHUD)->ToggleInventoryScreen();
     }
 }
@@ -60,13 +59,21 @@ void ARPlayerController::OnUse()
 
     DrawDebugLine(GetWorld(), start_trace, end_trace, FColor(0, 0, 255), true, 1);
 
-
     if(ARItem* UsableItem = Cast<ARItem>(Hit.GetActor()))
     {
-        // TODO:: Have player place item in inventory
-     //   RPlayer->PickupItem
-        //VPlayer->PickupItem(UsableItem);
-        UsableItem->PickedUp(); // Notify Item its been picked up incase  it wants to do something special
-        Cast<ARHUD>(MyHUD)->InventoryWidget->AddItem(UsableItem);
+        //UsableItem->ItemName = 
+        int32 InventorySlot = RPlayer->PickupItem(UsableItem);
+
+        // Did player actually pickup the item?
+      //  if(InventorySlot > -1) {
+         //   Cast<ARHUD>(MyHUD)->AddItemToInventory(UsableItem, InventorySlot);
+
+        Cast<ARHUD>(MyHUD)->InventoryWidget->bInventoryChanged = true;
+            UsableItem->PickedUp();
+       // }
     }
+}
+
+ARInventoryCharacter* ARPlayerController::GetRCharacter() {
+    return RPlayer;
 }

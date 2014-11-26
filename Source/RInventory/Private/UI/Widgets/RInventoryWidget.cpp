@@ -4,37 +4,41 @@
 #include "RItem.h"
 #include "RInventoryWidget.h"
 
-URInventoryWidget::URInventoryWidget(const FObjectInitializer& ObjectInitializer):
+URInventoryWidget::URInventoryWidget(const FObjectInitializer& ObjectInitializer) :
     Super(ObjectInitializer)
 {
     bInventoryChanged = false;
     bRebuildGridLayout = true;
 }
 
-void URInventoryWidget::AddItem(ARItem* Item)
+void URInventoryWidget::Construct_Implementation() 
 {
-   // ItemList.Add(FRItemInfo(Item->Name, "Derpy Dessription", FSlateBrush()));
 
-    bInventoryChanged = true;
 }
 
 void URInventoryWidget::PostInitProperties() {
     Super::PostInitProperties();
-
-//    Items.Reserve(MaxInventorySlots);
 }
 
 void URInventoryWidget::ToggleVisibility()
 {
+    GEngine->AddOnScreenDebugMessage(-1, 2, FColor::Green, TEXT("ToggleVisibility"));
+
     if(bInventoryChanged) {
-        OnResetLayout();
+        OnPopulateInventoryGrid(); // Redraw item icons
+        GEngine->AddOnScreenDebugMessage(-1, 2, FColor::Green, TEXT("iv changed!"));
+
         bInventoryChanged = false;
     }
 
     if(bRebuildGridLayout) {
-        RebuildGridLayout();
+        OnInventoryGridSlotCountChanged(); // Called when slot count has changed
         bRebuildGridLayout = false;
     }
     Super::ToggleVisibility();
 }
 
+void URInventoryWidget::MarkInventoryChanged()
+{
+    bInventoryChanged = true;
+}

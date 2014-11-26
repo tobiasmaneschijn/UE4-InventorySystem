@@ -30,10 +30,13 @@ public:
     FRItemInfo ItemInfo;
 
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Item")
-    FName Name;
+    FString ItemName;
 
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Item")
     FString Description;
+
+    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Item")
+    FSlateBrush ItemIcon;
 
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Item")
     bool bIsEquipable;

@@ -3,6 +3,8 @@
 #pragma once
 
 #include "Components/ActorComponent.h"
+
+#include "Items/RItemData.h"
 #include "RInventoryComponent.generated.h"
 
 /**
@@ -15,9 +17,20 @@ class RINVENTORY_API URInventoryComponent : public UActorComponent
 
 public:
 	
+    URInventoryComponent(const FObjectInitializer& ObjectInitializer);
+
     virtual void InitializeComponent() override;
     virtual void BeginDestroy() override;
 	
-    void AddItem();
+    int32 AddItem(class ARItem* Item);
 
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inventory")
+    TArray<FRInventorySlot> Inventory;
+
+    TArray<class FRItem*> Items; // Inventory Component owns the items.
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inventory Grid")
+    int32 MaxInventorySlots;
+
+    int32 GetEmptySlot();
 };

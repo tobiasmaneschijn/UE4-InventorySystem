@@ -31,12 +31,39 @@ public:
 
     }
 
-    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Item Info")
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item Info")
     FName ItemName;
 
-    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Item Info")
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item Info")
     FString ItemDescription;
 	
-    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Item Info")
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item Info")
     FSlateBrush ItemIcon;
+};
+
+/**
+* This is a slot within InventoryComponent
+*/
+USTRUCT(BlueprintType)
+struct FRInventorySlot
+{
+    GENERATED_USTRUCT_BODY()
+
+public:
+    FRInventorySlot():
+        SlotIndex(-1),
+        ItemName("Item Name Not Set"),
+        ItemIcon()
+    {
+    }
+    // The index of slot this item takes up in inventory
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item Info")
+    int32 SlotIndex;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item Info")
+    FString ItemName;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item Inventory")
+    FSlateBrush ItemIcon;
+
 };
