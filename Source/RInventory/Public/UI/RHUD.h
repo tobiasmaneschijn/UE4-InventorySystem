@@ -24,7 +24,7 @@ public:
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Widgets)
     TSubclassOf<class UUserWidget> InventoryWidgetType;
 
-    UPROPERTY()
+    UPROPERTY(EditAnywhere, BlueprintReadWrite)
     URInventoryWidget* InventoryWidget;
 
     void AddItemToInventory(class ARItem* Item, int32 InventorySlot);
