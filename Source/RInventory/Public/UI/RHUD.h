@@ -17,6 +17,7 @@ class RINVENTORY_API ARHUD : public AHUD
 	
 public:
 
+    ARHUD(const FObjectInitializer& ObjectInitializer);
     void PostInitializeComponents() override;
 
     void ToggleInventoryScreen();
@@ -31,9 +32,12 @@ public:
 
     void MarkInventoryAsChanged();
 
+    bool IsMouseCursorVisible();
+
+    bool IsInventoryScreenVisible();
+
 protected:
     class ARPlayerController* RPlayerOwner;
 
-    bool bIsInventoryWidgetDirty;
-	
+    bool bShowMouseCursor;
 };

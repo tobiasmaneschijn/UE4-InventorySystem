@@ -9,6 +9,9 @@ URInventoryWidget::URInventoryWidget(const FObjectInitializer& ObjectInitializer
 {
     bInventoryChanged = false;
     bRebuildGridLayout = true;
+
+    bTakesMouseFocus = true;
+    bDisablesCameraMovement = true;
 }
 
 void URInventoryWidget::Construct_Implementation() 
@@ -22,11 +25,8 @@ void URInventoryWidget::PostInitProperties() {
 
 void URInventoryWidget::ToggleVisibility()
 {
-    GEngine->AddOnScreenDebugMessage(-1, 2, FColor::Green, TEXT("ToggleVisibility"));
-
     if(bInventoryChanged) {
         OnPopulateInventoryGrid(); // Redraw item icons
-        GEngine->AddOnScreenDebugMessage(-1, 2, FColor::Green, TEXT("iv changed!"));
 
         bInventoryChanged = false;
     }

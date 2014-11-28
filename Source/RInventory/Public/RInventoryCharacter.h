@@ -26,6 +26,8 @@ public:
     // returns the slot item was placed in
     int32 PickupItem(class ARItem * Item);
 
+    void SetCameraMovementEnabled(bool bIsCameraEnabled);
+
     /** Returns CameraBoom subobject **/
     FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
     /** Returns FollowCamera subobject **/

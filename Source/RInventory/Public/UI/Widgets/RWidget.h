@@ -12,20 +12,16 @@ UCLASS()
 class RINVENTORY_API URWidget : public UUserWidget
 {
 	GENERATED_BODY()
-	
 public:
 
     URWidget(const FObjectInitializer& ObjectInitializer);
 
     virtual void ToggleVisibility();
 
-    UFUNCTION(BlueprintImplementableEvent, Category = "Events")
-    void OnAddedToViewport();
+    bool DoesTakeMouseFocus() const;
 
-    UFUNCTION(BlueprintImplementableEvent, Category = "Events")
-    void OnRemovedFromViewport();
-
-    bool bHasBeenAddedToGameViewport;
-
-	
+    bool DoesDisableCameraMovement() const;
+protected:
+    bool bDisablesCameraMovement;
+    bool bTakesMouseFocus;
 };
