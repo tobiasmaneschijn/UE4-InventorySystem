@@ -7,9 +7,6 @@
 
 void ARPlayerController::PostInitializeComponents()
 {
-  //  this->CurrentMouseCursor = EMouseCursor::None;
-  //  this->DefaultMouseCursor = EMouseCursor::None;
- //   this->bShowMouseCursor = true;
     Super::PostInitializeComponents();
 }
 
@@ -22,7 +19,7 @@ void ARPlayerController::SetPawn(APawn* Pawn) {
 void ARPlayerController::BeginPlay()
 {
     Super::BeginPlay();
-
+    
     MyVHUD = Cast<ARHUD>(MyHUD);
 }
 
@@ -33,21 +30,12 @@ void ARPlayerController::SetupInputComponent()
     InputComponent->BindAction("InventoryScreen", IE_Pressed, this, &ARPlayerController::ToggleInventoryScreen);
     InputComponent->BindAction("Use", IE_Pressed, this, &ARPlayerController::OnUse);
 }
+
 void ARPlayerController::ToggleInventoryScreen()
 {
-    this->bEnableMouseOverEvents = true;
-    //ssthis->DefaultMouseCursor = EMouseCursor::GrabHand;
-
-    // disable camera...
-    MyVHUD->ToggleInventoryScreen();
-
-    if(MyVHUD->InventoryWidget->DoesDisableCameraMovement() && MyVHUD->InventoryWidget->GetIsVisible()) {
-     //   SetIgnoreLookInput(true);
-  //      this->CurrentMouseCursor = EMouseCursor::GrabHand;
-    //    this->DefaultMouseCursor = EMouseCursor::GrabHand;
-    }
-    else if(!MyVHUD->InventoryWidget->GetIsVisible()) {
-    //    SetIgnoreLookInput(false);
+    if(MyHUD != NULL && Cast<ARHUD>(MyHUD) != NULL)
+    {
+        Cast<ARHUD>(MyHUD)->ToggleInventoryScreen();
     }
 }
 

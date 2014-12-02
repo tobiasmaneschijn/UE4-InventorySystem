@@ -6,8 +6,10 @@
 URWidget::URWidget(const FObjectInitializer& ObjectInitializer) :
     Super(ObjectInitializer)
 {
-
+    bHasBeenAddedToGameViewport = false;
 }
+
+
 void URWidget::ToggleVisibility()
 {
     if(GetIsVisible())
@@ -17,13 +19,10 @@ void URWidget::ToggleVisibility()
     else
     {
         AddToViewport();
-    }
+        bHasBeenAddedToGameViewport = true;
+    } 
 }
 
-bool URWidget::DoesTakeMouseFocus() const {
-    return bTakesMouseFocus;
-}
 
-bool URWidget::DoesDisableCameraMovement() const {
-    return bDisablesCameraMovement;
-}
+
+

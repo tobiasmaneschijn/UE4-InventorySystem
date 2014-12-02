@@ -28,10 +28,6 @@ public:
 
     void ToggleInventoryScreen();
 
-    void ShowInventoryScreen();
-
-    void HideInventoryScreen();
-
     void OnUse();
 
     UPROPERTY()

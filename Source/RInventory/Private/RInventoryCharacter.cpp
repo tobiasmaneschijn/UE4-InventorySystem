@@ -157,7 +157,3 @@ void ARInventoryCharacter::SetNumInventorySlots(uint8 NumSlots) {
 uint8 ARInventoryCharacter::GetNumInventorySlots() {
     return 0;
 }
-
-void ARInventoryCharacter::SetCameraMovementEnabled(bool bIsEnabled) {
-    CameraBoom->bUsePawnControlRotation = bIsEnabled;
-}
