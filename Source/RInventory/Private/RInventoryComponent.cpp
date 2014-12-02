@@ -29,11 +29,8 @@ void URInventoryComponent::BeginDestroy() {
 }
 
 int32 URInventoryComponent::AddItem(ARItem* Item) {
-
     // find an empty inventory slot
     int32 EmptySlot = GetEmptySlot();
-
-    UE_LOG(RLog, Warning, TEXT("URInventoryComponent[AddSlot] Empty Slot: %d "), EmptySlot);
 
     if(EmptySlot == -1) {
         // failed
@@ -62,4 +59,12 @@ int32 URInventoryComponent::GetEmptySlot() {
     }
 
     return -1; 
+}
+
+FRInventorySlot URInventoryComponent::GetItemInfoFromSlot(int32 SlotIndex) {
+    if(SlotIndex > Inventory.Num()) {
+        // blow up
+    }
+
+    return Inventory[SlotIndex];
 }

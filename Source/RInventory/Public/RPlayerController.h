@@ -30,7 +30,6 @@ public:
 
     void OnUse();
 
-    UPROPERTY()
     class ARHUD* MyVHUD;
 
     UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category ="Player")

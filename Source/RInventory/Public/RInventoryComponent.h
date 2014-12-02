@@ -29,6 +29,9 @@ public:
 
     TArray<class FRItem*> Items; // Inventory Component owns the items.
 
+    UFUNCTION(BlueprintCallable, category = Functions)
+    FRInventorySlot GetItemInfoFromSlot(int32 SlotIndex);
+
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inventory Grid")
     int32 MaxInventorySlots;
 
