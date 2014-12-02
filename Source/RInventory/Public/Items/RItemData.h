@@ -64,3 +64,23 @@ public:
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item Info")
     int32 SlotIndex;
 };
+
+/** Structure that defines a level up table entry */
+USTRUCT(BlueprintType)
+struct FRItemData : public FTableRowBase
+{
+    GENERATED_USTRUCT_BODY()
+
+public:
+
+    FRItemData()
+        : Name()
+        , Description()
+    {}
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = LevelUp)
+    FString Name;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = LevelUp)
+    FString Description;
+};
