@@ -27,5 +27,7 @@ public:
 
     bool bHasBeenAddedToGameViewport;
 
+    bool bIsVisible;
+
 	
 };

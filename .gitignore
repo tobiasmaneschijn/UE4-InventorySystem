@@ -19,3 +19,4 @@ Content/StarterContent
 
 # Ignore saved backuos, logs, cooked files, etc...
 Saved/
+*.stackdump

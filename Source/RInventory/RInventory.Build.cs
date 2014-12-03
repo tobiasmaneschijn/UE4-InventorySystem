@@ -13,6 +13,7 @@ public class RInventory : ModuleRules
             "InputCore", 
             "UMG", 
             "Slate", 
-            "SlateCore" });
+            "SlateCore" 
+        });
 	}
 }

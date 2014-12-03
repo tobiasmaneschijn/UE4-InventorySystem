@@ -16,9 +16,7 @@ void ARHUD::PostInitializeComponents()
     {
         InventoryWidget = CreateWidget<URInventoryWidget>(GetWorld(), InventoryWidgetType);
 
-        // TODO:: Fix this silly hack. Without it Items would only start to show up in Inventory Screen after Toggled once.
-        InventoryWidget->ToggleVisibility();
-        InventoryWidget->ToggleVisibility();
+        InventoryWidget->AddToViewport();
     }
     else
     {

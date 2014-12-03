@@ -6,20 +6,21 @@
 URWidget::URWidget(const FObjectInitializer& ObjectInitializer) :
     Super(ObjectInitializer)
 {
-    bHasBeenAddedToGameViewport = false;
+
 }
 
 
 void URWidget::ToggleVisibility()
 {
-    if(GetIsVisible())
+    if(bIsVisible)
     {
-        RemoveFromViewport();
+        SetVisibility(ESlateVisibility::Collapsed);
+        bIsVisible = false;
     }
     else
     {
-        AddToViewport();
-        bHasBeenAddedToGameViewport = true;
+        SetVisibility(ESlateVisibility::Visible);
+        bIsVisible = true;
     } 
 }
 
