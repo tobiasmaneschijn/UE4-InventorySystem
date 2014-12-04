@@ -36,10 +36,11 @@ void ARPlayerController::SetupInputComponent()
 
 void ARPlayerController::ToggleInventoryScreen()
 {
-    if(MyHUD != NULL && Cast<ARHUD>(MyHUD) != NULL)
-    {
-        Cast<ARHUD>(MyHUD)->ToggleInventoryScreen();
-    }
+    // TODO: Cache ARHUD as a variable
+   // if(MyHUD != NULL && Cast<ARHUD>(MyHUD) != NULL)
+  //  {
+        MyVHUD->ToggleInventoryScreen();
+  //  }
 }
 
 void ARPlayerController::OnUse() 

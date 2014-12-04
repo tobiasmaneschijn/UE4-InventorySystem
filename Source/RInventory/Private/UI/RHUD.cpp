@@ -25,6 +25,22 @@ void ARHUD::PostInitializeComponents()
 
 void ARHUD::ToggleInventoryScreen()
 {
+    // TODO: Track all UI Widgets to determine if we should keep mouse cursor visible 
+    // as well as stopping game input!
+    if(InventoryWidget->bIsVisible) {
+        // hide mouse cursor
+        FInputModeGameOnly InputMode;
+        RPlayerOwner->SetInputMode(InputMode);
+        RPlayerOwner->bShowMouseCursor = false;
+    }
+    else {
+        FInputModeGameAndUI InputMode;
+        InputMode.SetLockMouseToViewport(true);
+        InputMode.SetHideCursorDuringCapture(true);
+        InputMode.SetWidgetToFocus(InventoryWidget->TakeWidget());
+        RPlayerOwner->SetInputMode(InputMode);
+        RPlayerOwner->bShowMouseCursor = true;
+    }
     InventoryWidget->ToggleVisibility();
 }
 
