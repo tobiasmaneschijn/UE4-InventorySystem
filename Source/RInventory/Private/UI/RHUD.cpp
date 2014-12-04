@@ -15,7 +15,6 @@ void ARHUD::PostInitializeComponents()
     if(InventoryWidgetType)
     {
         InventoryWidget = CreateWidget<URInventoryWidget>(GetWorld(), InventoryWidgetType);
-
         InventoryWidget->AddToViewport();
     }
     else

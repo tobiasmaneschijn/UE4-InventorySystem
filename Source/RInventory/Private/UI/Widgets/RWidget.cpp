@@ -21,7 +21,7 @@ void URWidget::ToggleVisibility()
     {
         SetVisibility(ESlateVisibility::Visible);
         bIsVisible = true;
-    } 
+    }
 }
 
 

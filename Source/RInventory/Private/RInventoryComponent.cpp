@@ -15,8 +15,8 @@ void URInventoryComponent::InitializeComponent()
 {
     Super::InitializeComponent();
 
-    Inventory.Reserve(MaxInventorySlots);
-    for(int32 CurrentSlot = 0; CurrentSlot < MaxInventorySlots; ++CurrentSlot)
+    Inventory.Reserve(5);
+    for(int32 CurrentSlot = 0; CurrentSlot < 5; ++CurrentSlot)
     {
         FRInventorySlot Slot;
         Slot.SlotIndex = -1; // set it as not set
