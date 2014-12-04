@@ -21,6 +21,9 @@ void ARPlayerController::BeginPlay()
     Super::BeginPlay();
     
     MyVHUD = Cast<ARHUD>(MyHUD);
+
+    // setup Player's Equipment component
+    RPlayer->InitializeInventoryComponent(Cast<ARHUD>(MyHUD)->InventoryWidget->MaxInventorySlots);
 }
 
 void ARPlayerController::SetupInputComponent()

@@ -46,7 +46,6 @@ ARInventoryCharacter::ARInventoryCharacter(const FObjectInitializer& ObjectIniti
     Equipment->bAutoRegister = true;
     Equipment->bWantsInitializeComponent = true;
     Equipment->Activate();
-
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	// are set in the derived blueprint asset named MyCharacter (to avoid direct content references in C++)
 }
@@ -156,4 +155,8 @@ void ARInventoryCharacter::SetNumInventorySlots(uint8 NumSlots) {
 
 uint8 ARInventoryCharacter::GetNumInventorySlots() {
     return 0;
+}
+
+void ARInventoryCharacter::InitializeInventoryComponent(int32 NumSlots) {
+    Equipment->InitializeInventory(NumSlots);
 }

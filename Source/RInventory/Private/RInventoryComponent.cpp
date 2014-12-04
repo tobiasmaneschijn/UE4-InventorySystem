@@ -10,24 +10,6 @@ URInventoryComponent::URInventoryComponent(const FObjectInitializer& ObjectIniti
     MaxInventorySlots = 50;
 }
 
-
-void URInventoryComponent::InitializeComponent()
-{
-    Super::InitializeComponent();
-
-    Inventory.Reserve(5);
-    for(int32 CurrentSlot = 0; CurrentSlot < 5; ++CurrentSlot)
-    {
-        FRInventorySlot Slot;
-        Slot.SlotIndex = -1; // set it as not set
-        Inventory.Add(Slot);
-    }
-}
-
-void URInventoryComponent::BeginDestroy() {
-    Super::BeginDestroy();
-}
-
 int32 URInventoryComponent::AddItem(ARItem* Item) {
     // find an empty inventory slot
     int32 EmptySlot = GetEmptySlot();
@@ -67,4 +49,16 @@ FRInventorySlot URInventoryComponent::GetItemInfoFromSlot(int32 SlotIndex) {
     }
 
     return Inventory[SlotIndex];
+}
+
+void URInventoryComponent::InitializeInventory(int32 NumSlots) {
+    MaxInventorySlots = NumSlots;
+
+    Inventory.Reserve(MaxInventorySlots);
+    for(int32 CurrentSlot = 0; CurrentSlot < MaxInventorySlots; ++CurrentSlot)
+    {
+        FRInventorySlot Slot;
+        Slot.SlotIndex = -1; // set it as not set
+        Inventory.Add(Slot);
+    }
 }

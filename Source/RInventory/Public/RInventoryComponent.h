@@ -18,11 +18,10 @@ class RINVENTORY_API URInventoryComponent : public UActorComponent
 public:
 	
     URInventoryComponent(const FObjectInitializer& ObjectInitializer);
-
-    virtual void InitializeComponent() override;
-    virtual void BeginDestroy() override;
 	
     int32 AddItem(class ARItem* Item);
+
+    void InitializeInventory(int32 NumSlots);
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inventory")
     TArray<FRInventorySlot> Inventory;
